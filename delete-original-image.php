@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/extend/plugins/health-check/
 	Description: This plugin allows you to enable an option to automatically delete the original image after upload. It also has an option to do it for all your previously uploaded images. The plugin will only modify images with 'large' size, copying that large image to replace the original one. 
 	Author: Carlos Minatti
-	Version: 0.1
+	Version: 0.2
 	Author URI: 
 	Text Domain: delete-original-image
 	Domain Path: 
