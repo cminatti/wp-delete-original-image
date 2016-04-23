@@ -86,15 +86,24 @@ add_filter("plugin_action_links_$plugin", 'doi_plugin_settings_link' );
     // paths to the uploaded image and the large image
     $upload_dir = wp_upload_dir();
     $uploaded_image_location = $upload_dir['basedir'] . '/' .$image_data['file'];
-    $large_image_location = $upload_dir['path'] . '/'.$image_data['sizes']['large']['file'];
+    
+    //$large_image_location = $upload_dir['path'] . '/'.$image_data['sizes']['large']['file'];//error!!!
+    
+    $large_image_location = $upload_dir['basedir'] . '/' .dirname($image_data['file']) . '/'.$image_data['sizes']['large']['file'];
 
-    // delete the uploaded image
-    unlink($uploaded_image_location);
+//    echo $large_image_location; return; 
+    if (file_exists($large_image_location)) {
+        // delete the uploaded image
+        if (file_exists($uploaded_image_location)) {
+            unlink($uploaded_image_location);
+        }
 
-    // rename the large image
-//    rename($large_image_location,$uploaded_image_location);
-    copy($large_image_location,$uploaded_image_location);
-
+        // rename the large image
+    //    rename($large_image_location,$uploaded_image_location);
+        copy($large_image_location,$uploaded_image_location);
+    } else {
+        echo 'Error. Large image not found: '.$large_image_location.'<br>';
+    }
     // update image metadata and return them
     $image_data['width'] = $image_data['sizes']['large']['width'];
     $image_data['height'] = $image_data['sizes']['large']['height'];

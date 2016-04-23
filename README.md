@@ -8,3 +8,6 @@ The plugin gives you an option to enable/disable this to be done automatically w
 
 Specifically, this plugin copy the 'large' image ( i.e: your-pic-1038x576.jpg ) to the original file path ( i.e.: your-pic.jpg ). 
 
+April 2016. Fixed bug!
+The plugin failed for images that were not uploaded in the current month. Deleting the original image but not copying the 1038x567 image to the original image location.
+
